@@ -75,6 +75,14 @@ class Color(PrimitiveKeyword):
         )
     )
 
+@register
+class Offset(PrimitiveKeyword):
+    primitive = p.Composite.subclass(
+        items = (
+            ('x', p.Double),
+            ('y', p.Double),
+        )
+    )
 
 Debug = register(Enum.subclass(
     'Debug', choices='off|on|0|1|2|3|4|5'.split('|')
@@ -192,6 +200,7 @@ class Style(CompositeDirective):
         Float.subclass('MINWIDTH'),
 
         # OFFSET [x] [y]
+        Offset.subclass('OFFSET'),
 
         # OPACITY [integer|attribute]
         Integer.subclass('OPACITY'),
@@ -283,6 +292,7 @@ class Label(CompositeDirective):
         Float.subclass('MINSIZE'),
 
         # OFFSET [x] [y]
+        Offset.subclass('OFFSET'),
 
         # OUTLINECOLOR [r] [g] [b] | [attribute]
         Color.subclass('OUTLINECOLOR'),
