@@ -8,7 +8,7 @@
 
     $ sudo apt-get install python-mapscript
 
-После чего копируем ннобходимые файлы в директорию виртуального окружения, используемого для работы NextGIS Web. На этом шаге возможны как минимум 2 варианта в зависимости от того, в каком виде устанвливается пакет python-mapscript в систему. Это зависит от используемого дистрибутива.
+После чего копируем необходимые файлы в директорию виртуального окружения, используемого для работы NextGIS Web. На этом шаге возможны как минимум 2 варианта в зависимости от того, в каком виде устанвливается пакет python-mapscript в систему. Это зависит от используемого дистрибутива.
 
 Если вы используете FreeBSD, то для копирования системного MapScript в виртуальное окружение (директория `env`) можно воспользоваться следующими командами:
 
@@ -21,7 +21,7 @@
     $ cp /usr/lib/python2.7/dist-packages/*mapscript* env/lib/python2.7/site-packages/mapscript.egg
     $ echo "./mapscript.egg" > env/lib/python2.7/site-packages/mapscript.pth
 
-Если сейчас запустить следующую команду:
+Если сейчас выполнить команду:
 
     $ env/bin/pip freeze
 
@@ -29,7 +29,7 @@
 
     "Missing 'Version:' header and/or PKG-INFO file", mapscript [unknown version]
 
-Для исправления данной ошибки создаем файл:
+Для её исправления создаем файл `PKG0-INFO`:
 
     $ mkdir env/lib/python2.7/site-packages/mapscript.egg/EGG-INFO
     $ touch env/lib/python2.7/site-packages/mapscript.egg/EGG-INFO/PKG-INFO
@@ -46,4 +46,4 @@
 
 Устанавливаем пакет в режиме разработки:
 
-    $ env/bin/pip install -e nextgisweb_mapserver
+    $ env/bin/pip install -e ./nextgisweb_mapserver
