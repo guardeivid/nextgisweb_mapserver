@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from random import choice
 from StringIO import StringIO
 from pkg_resources import resource_filename
@@ -159,6 +160,15 @@ class MapserverStyle(Base, Resource):
 
         # Выбираем объекты по экстенту
         feature_query = self.parent.feature_query()
+
+        # Выбираем объекты на последнюю дату
+        # columns = (field.column_name for field in self.parent.fields)
+        # if "adate_beg" in columns and "adate_end" in columns:
+        #     current_date = datetime.now()
+        #     feature_query.filter(
+        #         ("adate_beg", "le", current_date),
+        #         ("adate_end", "ge", current_date)
+        #     )
 
         # FIXME: Тоже самое, но через интерфейсы
         if hasattr(feature_query, 'srs'):
