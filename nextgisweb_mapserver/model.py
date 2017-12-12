@@ -175,7 +175,7 @@ class MapserverStyle(Base, Resource):
 
         # Отфильтровываем объекты по условию
         if cond is not None:
-            feature_query.filter_by(**cond)
+            feature_query.filter_json(cond)
 
         # FIXME: Тоже самое, но через интерфейсы
         if hasattr(feature_query, 'srs'):
